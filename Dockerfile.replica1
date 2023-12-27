@@ -1,0 +1,14 @@
+# Use the official Redis image as the base image
+FROM redis
+
+# Update the package list and install sysctl
+RUN apt-get update && apt-get install -y procps
+
+# Set the working directory
+WORKDIR /usr/local/etc/redis
+
+# Copy the Redis configuration file for replica
+COPY redis-replica-1/redis.conf /usr/local/etc/redis/redis.conf
+
+# Command to run Redis with the custom configuration file
+CMD ["redis-server", "/usr/local/etc/redis/redis.conf"]

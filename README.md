@@ -1,2 +1,2 @@
-# redis-master-slave
- An example of Redis replication using the master-slave configuration
+# redis-replication
+ An example of Redis replication using the master-slave configuration, with Docker containers

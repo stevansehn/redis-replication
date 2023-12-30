@@ -27,6 +27,32 @@ services:
       my-network:
         ipv4_address: 172.28.1.3
 
+  redis-replica-2:
+    build:
+      context: .
+      dockerfile: Dockerfile.replica2
+    container_name: redis-replica-2
+    ports:
+      - "6381:6379"
+    volumes:
+      - ./redis-replica-2/redis-data:/data
+    networks:
+      my-network:
+        ipv4_address: 172.28.1.4
+
+  redis-replica-3:
+    build:
+      context: .
+      dockerfile: Dockerfile.replica3
+    container_name: redis-replica-3
+    ports:
+      - "6382:6379"
+    volumes:
+      - ./redis-replica-3/redis-data:/data
+    networks:
+      my-network:
+        ipv4_address: 172.28.1.5
+
 networks:
   my-network:
     ipam:

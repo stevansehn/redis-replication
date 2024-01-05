@@ -4,6 +4,9 @@ FROM redis
 # Update the package list and install sysctl
 RUN apt-get update && apt-get install -y procps
 
+# Set vm.overcommit_memory to 1 in sysctl.conf
+RUN echo 'vm.overcommit_memory = 1' >> /etc/sysctl.conf
+
 # Set the working directory
 WORKDIR /usr/local/etc/redis
 
